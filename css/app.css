@@ -1,11 +1,13 @@
 html {
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
 }
 
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
+    -webkit-box-sizing: inherit;
+            box-sizing: inherit;
 }
 
 html,
@@ -23,10 +25,19 @@ body {
 }
 
 .container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 
 h1 {
@@ -46,6 +57,8 @@ h1 {
     width: 650px;
     min-height: 519px;
     position: absolute;
+    -webkit-transition: all .7s cubic-bezier(.22, .68, 0, 1.41);
+    -o-transition: all .7s cubic-bezier(.22, .68, 0, 1.41);
     transition: all .7s cubic-bezier(.22, .68, 0, 1.41);
     right: -650px;
 }
@@ -57,10 +70,17 @@ h1 {
     padding: 7px;
     /*border-radius: 10px;*/
     /*box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);*/
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     margin: 0 0 3em;
 }
 
@@ -71,14 +91,21 @@ h1 {
     font-size: 0;
     border-radius: 5px;
     cursor: pointer;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     /*box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);*/
 }
 
 .deck .card.open {
-    transform: rotateY(0);
+    -webkit-transform: rotateY(0);
+            transform: rotateY(0);
     background: #02b3e4;
     cursor: default;
 }
@@ -95,15 +122,21 @@ h1 {
 
 .card-container {
     position: relative;
-    perspective: 800px;
+    -webkit-perspective: 800px;
+            perspective: 800px;
 }
 
 .card-flip {
     width: 100%;
     height: 100%;
     position: absolute;
-    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: -webkit-transform 0.5s;
+    -o-transition: transform 0.5s;
     transition: transform 0.5s;
+    transition: transform 0.5s, -webkit-transform 0.5s;
 }
 
 .card-flip img,
@@ -113,7 +146,8 @@ h1 {
     position: absolute;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
 }
 
 .card-flip .front {
@@ -126,12 +160,14 @@ h1 {
 
 .card-flip .back {
     background: #2e3d49;
-    transform: rotateY( 180deg);
+    -webkit-transform: rotateY( 180deg);
+            transform: rotateY( 180deg);
 }
 
 
 .card-flip.flipped {
-    transform: rotateY( 180deg);
+    -webkit-transform: rotateY( 180deg);
+            transform: rotateY( 180deg);
 }
 
 .front,
@@ -142,11 +178,15 @@ h1 {
 }
 
 .escale {
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
 }
 
 .escale:hover {
-    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
     cursor: pointer;
 }
 
@@ -188,7 +228,8 @@ h1 {
     padding: 30px 30px;
     border-radius: 25px 25px 25px 25px;
     position: relative;
-    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    -webkit-box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+            box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
 .bmo-screen {
@@ -207,6 +248,8 @@ h1 {
     min-height: 519px;
     left: -650px;
     top: 0;
+    -webkit-transition: all .7s cubic-bezier(.22, .68, 0, 1.41);
+    -o-transition: all .7s cubic-bezier(.22, .68, 0, 1.41);
     transition: all .7s cubic-bezier(.22, .68, 0, 1.41);
 }
 
@@ -225,7 +268,8 @@ h1 {
     height: 43px;
     position: absolute;
     top: 180px;
-    animation: blink 2.1s infinite; //https://codepen.io/bfred-it/pen/RNGOQW
+    -webkit-animation: blink 2.1s infinite;
+            animation: blink 2.1s infinite; //https://codepen.io/bfred-it/pen/RNGOQW
 }
 
 .bmo-button {
@@ -315,10 +359,13 @@ h1 {
     position: absolute;
     border-radius: 20px;
     padding: 8px;
-    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    -webkit-box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+            box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
     top: 100px;
     left: 645px;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 
 .short-message {
@@ -329,7 +376,8 @@ h1 {
     background: white;
     position: absolute;
     border-radius: 50%;
-    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    -webkit-box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+            box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
 .bubble1 {
@@ -353,7 +401,14 @@ p {
     white-space: nowrap;
     overflow: hidden;
     width: 30em;
-    animation: type 2.5s steps(60, end);
+    -webkit-animation: type 2.5s steps(60, end);
+            animation: type 2.5s steps(60, end);
+}
+
+@-webkit-keyframes type {
+    from {
+        width: 0;
+    }
 }
 
 @keyframes type {
@@ -370,16 +425,37 @@ p {
 
 /*https://codepen.io/bfred-it/pen/RNGOQW*/
 
-@keyframes blink {
+@-webkit-keyframes blink {
     90% {
-        transform: none;
-        animation-timing-function: ease-in;
+        -webkit-transform: none;
+                transform: none;
+        -webkit-animation-timing-function: ease-in;
+                animation-timing-function: ease-in;
     }
     93% {
-        transform: translateY(15px) scaleY(0)
+        -webkit-transform: translateY(15px) scaleY(0);
+                transform: translateY(15px) scaleY(0)
     }
     100% {
-        animation-timing-function: ease-out;
+        -webkit-animation-timing-function: ease-out;
+                animation-timing-function: ease-out;
+    }
+}
+
+@keyframes blink {
+    90% {
+        -webkit-transform: none;
+                transform: none;
+        -webkit-animation-timing-function: ease-in;
+                animation-timing-function: ease-in;
+    }
+    93% {
+        -webkit-transform: translateY(15px) scaleY(0);
+                transform: translateY(15px) scaleY(0)
+    }
+    100% {
+        -webkit-animation-timing-function: ease-out;
+                animation-timing-function: ease-out;
     }
 }
 
@@ -430,8 +506,6 @@ div#smile {
     border: 10px solid #222;
     border-top: 0;
     background: rgba(0, 0, 0, 0);
-    -moz-border-radius: 0 0 120px 120px / 0 0 90px 90px;
-    -webkit-border-radius: 0 0 120px 120px 0 0 90px 90px;
     border-radius: 0 0 120px 120px / 0 0 90px 90px;
     position: absolute;
     left: 242px;
@@ -460,7 +534,8 @@ div.corner.right {
 
 
 #lid {
-    animation: blink 2.2s infinite;
+    -webkit-animation: blink 2.2s infinite;
+            animation: blink 2.2s infinite;
 }
 
 #bmo-face.shown {
@@ -475,6 +550,8 @@ div.corner.right {
     z-index: 300;
     position: relative;
     opacity: 0;
+    -webkit-transition: opacity 0.4s ease-in;
+    -o-transition: opacity 0.4s ease-in;
     transition: opacity 0.4s ease-in;
     right: 47px;
 }
@@ -488,7 +565,9 @@ div.corner.right {
     position: absolute;
     left: 242px;
     top: 281px;
-    transform: rotate(-5deg);
+    -webkit-transform: rotate(-5deg);
+        -ms-transform: rotate(-5deg);
+            transform: rotate(-5deg);
 }
 
 #winSmile.shown {
@@ -524,6 +603,8 @@ div.corner.right {
 
 #startLabel {
     position: absolute;
+    -webkit-transition: opacity 0.4s linear;
+    -o-transition: opacity 0.4s linear;
     transition: opacity 0.4s linear;
     top: 575px;
     right: 54px;
