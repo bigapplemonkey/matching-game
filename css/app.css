@@ -1,0 +1,535 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #ffffff url('../img/grass.png');
+    /* Background pattern from Subtle Patterns */
+    font-family: 'Coda', cursive;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+
+
+
+
+
+/*
+ * Styles for the deck of cards
+ */
+
+#game {
+    width: 650px;
+    min-height: 519px;
+    position: absolute;
+    transition: all .7s cubic-bezier(.22, .68, 0, 1.41);
+    right: -650px;
+}
+
+.deck {
+    width: 480px;
+    min-height: 480px;
+    /*background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);*/
+    padding: 7px;
+    /*border-radius: 10px;*/
+    /*box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);*/
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 3em;
+}
+
+.deck .card {
+    height: 95px;
+    width: 95px;
+    /*background: #2e3d49;*/
+    font-size: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);*/
+}
+
+.deck .card.open {
+    transform: rotateY(0);
+    background: #02b3e4;
+    cursor: default;
+}
+
+.deck .card.show {
+    font-size: 33px;
+}
+
+.deck .card.match {
+    cursor: default;
+    background: #02ccba;
+    font-size: 33px;
+}
+
+.card-container {
+    position: relative;
+    perspective: 800px;
+}
+
+.card-flip {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.card-flip img,
+.card-flip div {
+    margin: 0;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.card-flip .front {
+    background: #C2D5CB;
+    font-size: 45px;
+    text-align: center;
+    padding: 8px;
+    border: 4px solid white;
+}
+
+.card-flip .back {
+    background: #2e3d49;
+    transform: rotateY( 180deg);
+}
+
+
+.card-flip.flipped {
+    transform: rotateY( 180deg);
+}
+
+.front,
+.back {
+    max-width: 95px;
+    min-height: 95px;
+    border-radius: 5px;
+}
+
+.escale {
+    transition: all .2s ease-in-out;
+}
+
+.escale:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+
+
+
+
+/*
+ * Styles for the Score Panel
+ */
+
+.score-panel {
+    width: 345px;
+    margin: 6px 0 0 86px;
+}
+
+.score-panel .stars {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+
+.score-panel .stars li {
+    list-style: none;
+    display: inline-block;
+}
+
+.score-panel .restart {
+    float: right;
+    cursor: pointer;
+}
+
+.bmo-case {
+    background: #25ad9f;
+    width: 750px;
+    margin-top: 20px;
+    height: 950px;
+    padding: 30px 30px;
+    border-radius: 25px 25px 25px 25px;
+    position: relative;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+}
+
+.bmo-screen {
+    background: #b9dfca;
+    width: 650px;
+    min-height: 519px;
+    border-radius: 35px 35px 35px 35px;
+    border: 5px solid;
+    position: relative;
+    overflow: hidden;
+}
+
+#bmo-face {
+    position: absolute;
+    width: 650px;
+    min-height: 519px;
+    left: -650px;
+    top: 0;
+    transition: all .7s cubic-bezier(.22, .68, 0, 1.41);
+}
+
+.bmo-transparent-screen {
+    opacity: 0.8;
+    background: #b9dfca;
+    width: 650px;
+    min-height: 519px;
+    border-radius: 35px 35px 35px 35px;
+}
+
+.bmo-eye {
+    border-radius: 50%;
+    background-color: black;
+    width: 43px;
+    height: 43px;
+    position: absolute;
+    top: 180px;
+    animation: blink 2.1s infinite; //https://codepen.io/bfred-it/pen/RNGOQW
+}
+
+.bmo-button {
+    border-radius: 50%;
+    border: 4px solid;
+    position: absolute;
+}
+
+.blue-button {
+    background: #014777;
+    width: 45px;
+    height: 45px;
+    right: 105px;
+    top: 565px;
+}
+
+.bmo-cross {
+    background: #fdd04e;
+    border-radius: 4%;
+    border: 4px solid;
+    position: absolute;
+}
+
+.vertical-cross {
+    width: 55px;
+    height: 145px;
+    top: 621px;
+    left: 190px;
+}
+
+.horizontal-cross {
+    width: 145px;
+    height: 55px;
+    left: 145px;
+    top: 664px;
+}
+
+.transparent-cross {
+    width: 47px;
+    height: 137px;
+    border: 0;
+    z-index: 100;
+    top: 625px;
+    left: 194px;
+}
+
+.bmo-triangle-button {
+    width: 0;
+    height: 0;
+    border-left: 47px solid transparent;
+    border-right: 47px solid transparent;
+    border-bottom: 94px solid;
+    position: absolute;
+    top: 630px;
+    left: 422px;
+}
+
+.inside-button {
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 80px solid #44c2df;
+    z-index: 200;
+    top: 639px;
+    left: 429px;
+}
+
+.green-button {
+    background: #6dbc62;
+    width: 65px;
+    height: 65px;
+    top: 691px;
+    left: 567px;
+}
+
+.red-button {
+    background: #ec3b45;
+    width: 85px;
+    height: 85px;
+    top: 744px;
+    left: 474px;
+}
+
+.speech-bubble {
+    width: 415px;
+    height: 75px;
+    background: white;
+    position: absolute;
+    border-radius: 20px;
+    padding: 8px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    top: 100px;
+    left: 645px;
+    justify-content: center;
+}
+
+.short-message {
+    width: 260px;
+}
+
+.speech-small-bubble {
+    background: white;
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+}
+
+.bubble1 {
+    width: 23px;
+    height: 23px;
+    top: 181px;
+    left: 678px;
+}
+
+.bubble2 {
+    width: 15px;
+    height: 15px;
+    top: 204px;
+    left: 660px;
+}
+
+p {
+    font-family: "Courier";
+    font-size: 20px;
+    margin: 10px 0 0 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 30em;
+    animation: type 2.5s steps(60, end);
+}
+
+@keyframes type {
+    from {
+        width: 0;
+    }
+}
+
+
+
+
+
+
+
+/*https://codepen.io/bfred-it/pen/RNGOQW*/
+
+@keyframes blink {
+    90% {
+        transform: none;
+        animation-timing-function: ease-in;
+    }
+    93% {
+        transform: translateY(15px) scaleY(0)
+    }
+    100% {
+        animation-timing-function: ease-out;
+    }
+}
+
+.right-eye {
+    right: 110px;
+}
+
+.left-eye {
+    left: 110px;
+}
+
+.bmo-disk {
+    height: 30px;
+    width: 415px;
+    border: 4px solid black;
+    background: #024f38;
+    border-radius: 5%;
+    position: absolute;
+    top: 574px;
+    left: 105px;
+}
+
+.bmo-connector {
+    background: #014777;
+    width: 95px;
+    height: 20px;
+    border-radius: 20%;
+    position: absolute;
+    border: 4px solid black;
+    top: 804px;
+}
+
+.right-connector {
+    left: 232px;
+}
+
+.left-connector {
+    left: 107px;
+}
+
+.center {
+    margin: 0 auto;
+}
+
+div#smile {
+    width: 160px;
+    height: 70px;
+    border: 10px solid #222;
+    border-top: 0;
+    background: rgba(0, 0, 0, 0);
+    -moz-border-radius: 0 0 120px 120px / 0 0 90px 90px;
+    -webkit-border-radius: 0 0 120px 120px 0 0 90px 90px;
+    border-radius: 0 0 120px 120px / 0 0 90px 90px;
+    position: absolute;
+    left: 242px;
+    top: 281px;
+}
+
+div.corner {
+    width: 10px;
+    height: 30px;
+    background: #222;
+    border-radius: 100px/160px;
+    -webkit-border-radius: 100px 160px;
+    -moz-border-radius: 100px/160px;
+    position: absolute;
+    top: -12px;
+    -webkit-transform: rotate(65deg);
+    -moz-transform: rotate(65deg);
+    left: -12px;
+}
+
+div.corner.right {
+    left: 142px;
+    -webkit-transform: rotate(-65deg);
+    -moz-transform: rotate(-65deg);
+}
+
+
+#lid {
+    animation: blink 2.2s infinite;
+}
+
+#bmo-face.shown {
+    left: 0;
+}
+
+#game.shown {
+    right: 0;
+}
+
+#message {
+    z-index: 300;
+    position: relative;
+    opacity: 0;
+    transition: opacity 0.4s ease-in;
+    right: 47px;
+}
+
+#message.shown {
+    opacity: 1;
+}
+
+#winSmile {
+    display: none;
+    position: absolute;
+    left: 242px;
+    top: 281px;
+    transform: rotate(-5deg);
+}
+
+#winSmile.shown {
+    display: block;
+}
+
+#smile.hidden {
+    display: none;
+}
+
+
+.top {
+    position: absolute;
+    background: #C7CFCB;
+    border: 4px solid black;
+    height: 80px;
+    width: 160px;
+}
+
+.top {
+    border-bottom-left-radius: 160px;
+    border-bottom-right-radius: 160px;
+    top: 20px;
+}
+
+.teeth {
+    position: absolute;
+    height: 25px;
+    width: 160px;
+    background: white;
+    border: 4px solid black;
+}
+
+#startLabel {
+    position: absolute;
+    transition: opacity 0.4s linear;
+    top: 575px;
+    right: 54px;
+    opacity: 0;
+}
+
+#startLabel.shown {
+    opacity: 1;
+}
