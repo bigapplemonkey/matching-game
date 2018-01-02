@@ -247,6 +247,9 @@ function shuffle(array) {
     return array;
 }
 
+function setImageSource($elem, cardName) {
+    $elem.childNodes[1].src = `img/${cardName}-min.png`;
+}
 
 function rebuildDeck() {
     moves = -1;
@@ -260,7 +263,7 @@ function rebuildDeck() {
     for (const $card of $cards) {
         if ($card.classList.contains('flipped')) $card.classList.remove('flipped');
         $card.dataset.card = randomCards[i];
-        setTimeout(function(cardName) { $card.childNodes[1].src = `img/${cardName}-min.png`; }, 150, randomCards[i]);
+        setTimeout(setImageSource, 150, $card, randomCards[i]);
         ++i;
     }
 }
