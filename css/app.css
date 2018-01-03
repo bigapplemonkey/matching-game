@@ -53,7 +53,7 @@ p {
 /*
  * Styles for the deck of cards
  */
-#game {
+.game {
     width: 650px;
     min-height: 519px;
     position: absolute;
@@ -221,7 +221,7 @@ p {
     overflow: hidden;
 }
 
-#bmo-face {
+.bmo-face {
     position: absolute;
     width: 650px;
     min-height: 519px;
@@ -469,7 +469,7 @@ p {
 /*
 * BMO's smile based on https://codepen.io/goosidious/pen/dPmVQp
 */
-div#smile {
+div.smile {
     width: 160px;
     height: 70px;
     border: 10px solid #222;
@@ -501,20 +501,15 @@ div.corner.right {
     -moz-transform: rotate(-65deg);
 }
 
-#lid {
-    -webkit-animation: blink 2.2s infinite;
-    animation: blink 2.2s infinite;
-}
-
-#bmo-face.shown {
+.bmo-face.shown {
     left: 0;
 }
 
-#game.shown {
+.game.shown {
     right: 0;
 }
 
-#message {
+.message {
     z-index: 300;
     position: relative;
     opacity: 0;
@@ -524,11 +519,11 @@ div.corner.right {
     right: 47px;
 }
 
-#message.shown {
+.message.shown {
     opacity: 1;
 }
 
-#win-smile {
+.win-smile {
     display: none;
     position: absolute;
     left: 242px;
@@ -538,11 +533,11 @@ div.corner.right {
     transform: rotate(-5deg);
 }
 
-#win-smile.shown {
+.win-smile.shown {
     display: block;
 }
 
-#smile.hidden {
+.smile.hidden {
     display: none;
 }
 
@@ -566,7 +561,7 @@ div.corner.right {
     border: 4px solid black;
 }
 
-#start-label {
+.start-label {
     position: absolute;
     -webkit-transition: opacity 0.4s linear;
     -o-transition: opacity 0.4s linear;
@@ -576,7 +571,7 @@ div.corner.right {
     opacity: 0;
 }
 
-#start-label.shown {
+.start-label.shown {
     opacity: 1;
 }
 
