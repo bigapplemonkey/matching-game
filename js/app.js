@@ -49,6 +49,7 @@
     let seconds = -1;
     let minutes = 0;
     let timerEvent;
+    let firstMoveMade = false;
 
     /*
      * Start the game transitions
@@ -56,14 +57,18 @@
     function initGame() {
         $face.classList.add('shown');
         setTimeout(function() {
-            displayMessage('<p class="type-writer">Who wants to play video games? <span>♥</span></p>', false, true);
+            displayMessage('<p class="type-writer">Who wants to play video games? ♥</p>', false, true);
             setTimeout(function() {
                 $start.addEventListener('click', function(evt) {
                     if (isRestart) {
+                        $openCards = [];
                         displayCards();
                         isRestart = false;
                     }
-                    startTimer();
+                    firstMoveMade = false;
+                    stopTimer();
+                    resetTimer();
+                    updateTimer();
                 });
                 $startLabel.classList.add('shown');
             }, 1000);
@@ -78,6 +83,11 @@
             }
 
             if ($pickedCard && $openCards.length <= 1) {
+                if (!firstMoveMade) {
+                    startTimer();
+                    firstMoveMade = true;
+                    isRestart = true;
+                }
                 flipCard($pickedCard);
                 addToOpenCards($pickedCard);
             }
@@ -122,6 +132,7 @@
     function rebuildDeck() {
         moves = -1;
         matches = 0;
+        firstMoveMade = false;
         resetStars();
         updateMoves();
 
@@ -185,7 +196,6 @@
             }, 400);
         }
 
-        isRestart = true;
         updateMoves();
     }
 
@@ -237,16 +247,12 @@
     }
 
     function checkStars() {
-        if (moves >= 10) {
+        if (moves >= 12) {
             $threeStar.classList.add('fa-star-o');
         }
-        if (moves >= 14) {
+        if (moves >= 18) {
             $twoStar.classList.add('fa-star-o');
         }
-        if (moves >= 20) {
-            $oneStar.classList.add('fa-star-o');
-        }
-
     }
 
     /*
@@ -255,7 +261,6 @@
     function resetStars() {
         $threeStar.classList.remove('fa-star-o');
         $twoStar.classList.remove('fa-star-o');
-        $oneStar.classList.remove('fa-star-o');
     }
 
     /*
@@ -303,6 +308,14 @@
     }
 
     /*
+     * Reset the timer
+     */
+    function resetTimer() {
+        seconds = -1;
+        minutes = 0;
+    }
+
+    /*
      * Stop the timer
      */
     function stopTimer() {
@@ -313,8 +326,6 @@
      * Start the timer
      */
     function startTimer() {
-        seconds = -1;
-        minutes = 0;
         stopTimer();
         timerEvent = setInterval(function() { updateTimer() }, 1000);
     }
