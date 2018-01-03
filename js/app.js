@@ -102,10 +102,6 @@
 
         $deck.style.display = 'none';
 
-        while ($deck.firstChild) {
-            $deck.removeChild($deck.firstChild);
-        }
-
         $deck.appendChild($deckFragment);
         $deck.style.display = null;
 
