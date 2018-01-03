@@ -36,6 +36,9 @@
     const $oneStar = document.getElementById('one-star');
     const $twoStar = document.getElementById('two-star');
     const $threeStar = document.getElementById('three-star');
+    const $timer = document.getElementById('timer');
+    const $stars = document.getElementById('stars');
+
     let $cards;
 
     let $openCards = [];
@@ -43,6 +46,9 @@
     let matches = 0;
     let isRestart = true;
     let isFirstGame = true;
+    let seconds = -1;
+    let minutes = 0;
+    let timerEvent;
 
     /*
      * Start the game transitions
@@ -57,6 +63,7 @@
                         displayCards();
                         isRestart = false;
                     }
+                    startTimer();
                 });
                 $startLabel.classList.add('shown');
             }, 1000);
@@ -186,12 +193,15 @@
      * Display winning message
      */
     function wonGame() {
+        stopTimer();
         setTimeout(function() {
             $smile.classList.add('hidden');
             $winSmile.classList.add('shown');
 
             $face.classList.add('shown');
-            displayMessage(`<p class="type-writer">I bow to you, sensei! <strong>${moves}</strong> Moves</p>`);
+
+            let starHTML = `${$stars.innerHTML.replace(/<li>/g, '').replace(/<\/li>/g, '')}`;
+            displayMessage(`<p class="type-writer">I bow to you! <strong>${minutes}:${seconds < 10 ? '0' : ''}${seconds}</strong> secs ${starHTML}</p>`);
 
         }, 600);
     }
@@ -277,6 +287,36 @@
      */
     function setImageSource($elem, cardName) {
         $elem.childNodes[1].src = `img/${cardName}-min.png`;
+    }
+
+    /*
+     * Update timer in the screen
+     */
+    function updateTimer() {
+        ++seconds;
+        if (seconds == 60) {
+            ++minutes;
+            seconds = 0;
+        }
+
+        $timer.innerText = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    }
+
+    /*
+     * Stop the timer
+     */
+    function stopTimer() {
+        if (timerEvent) clearInterval(timerEvent);
+    }
+
+    /*
+     * Start the timer
+     */
+    function startTimer() {
+        seconds = -1;
+        minutes = 0;
+        stopTimer();
+        timerEvent = setInterval(function() { updateTimer() }, 1000);
     }
 
     setTimeout(function() { initGame(); }, 500);

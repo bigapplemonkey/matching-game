@@ -174,9 +174,16 @@ p {
 /*
  * Styles for the Score Panel
  */
-.score-panel {
+.score-panel,
+.time-panel {
     width: 345px;
     margin: 6px 0 0 86px;
+}
+
+.time-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 .score-panel .stars {
@@ -189,11 +196,6 @@ p {
 .score-panel .stars li {
     list-style: none;
     display: inline-block;
-}
-
-.score-panel .restart {
-    float: right;
-    cursor: pointer;
 }
 
 /*
