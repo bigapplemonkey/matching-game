@@ -31,11 +31,11 @@
     const $bmoMessage = document.getElementById('bmo-message');
     const $moves = document.getElementById('moves');
     const $smile = document.getElementById('smile');
-    const $winSmile = document.getElementById('winSmile');
-    const $startLabel = document.getElementById('startLabel');
-    const $oneStar = document.getElementById('oneStar');
-    const $twoStar = document.getElementById('twoStar');
-    const $threeStar = document.getElementById('threeStar');
+    const $winSmile = document.getElementById('win-smile');
+    const $startLabel = document.getElementById('start-label');
+    const $oneStar = document.getElementById('one-star');
+    const $twoStar = document.getElementById('two-star');
+    const $threeStar = document.getElementById('three-star');
     let $cards;
 
     let $openCards = [];
