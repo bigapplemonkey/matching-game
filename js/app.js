@@ -32,6 +32,7 @@
     const $moves = document.getElementById('moves');
     const $smile = document.getElementById('smile');
     const $winSmile = document.getElementById('win-smile');
+    const $bigSmile = document.getElementById('big-smile');
     const $startLabel = document.getElementById('start-label');
     const $oneStar = document.getElementById('one-star');
     const $twoStar = document.getElementById('two-star');
@@ -152,6 +153,7 @@
      */
     function displayCards() {
         $face.classList.remove('shown');
+        $bigSmile.classList.remove('wider');
         setTimeout(function() {
             if (isFirstGame) {
                 prepareNewDeck();
@@ -212,6 +214,8 @@
 
             let starHTML = `${$stars.innerHTML.replace(/<li>/g, '').replace(/<\/li>/g, '')}`;
             displayMessage(`<p class="type-writer">I bow to you! <strong>${minutes}:${seconds < 10 ? '0' : ''}${seconds}</strong> secs ${starHTML}</p>`);
+
+            setTimeout(function() { $bigSmile.classList.add('wider'); }, 600);
 
         }, 600);
     }

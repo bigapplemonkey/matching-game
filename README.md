@@ -1,6 +1,6 @@
 # Matching Game (Memory Game)
 
-The Memory Game Project is a complete browser-based card matching game (also known as Concentration) inspired by the animated television series Adventure Time. This project fully combines mastery of HTML, CSS, and JavaScript.
+The Memory Game Project is a complete browser-based card matching game (also known as Concentration) inspired by the animated television series Adventure Time. This project fully combines mastery of HTML, CSS, CSS animations and JavaScript.
 
 ## Table of Contents
 
