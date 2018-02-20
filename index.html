@@ -65,6 +65,16 @@
             <div class="bmo-connector right-connector"></div>
         </div>
     </div>
+    <script>
+      document.body.className += " js-loading";
+
+      window.addEventListener("load", showPage, false);
+
+      function showPage() {
+        console.log('loaded...');
+        document.body.className = document.body.className.replace("js-loading","");
+      }
+    </script>
     <script src="js/app.js"></script>
 </body>
 
