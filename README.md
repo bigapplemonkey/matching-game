@@ -15,6 +15,10 @@ The real-life game, players flip over cards to locate the pairs that match. The 
 * Card matching.
 * Card mismatching.
 
+![Screenshot 1](http://res.cloudinary.com/jasuaje/image/upload/v1523375105/Screen_Shot_2018-04-10_at_11.42.05_AM_ucdd7y.png)
+![Screenshot 2](http://res.cloudinary.com/jasuaje/image/upload/v1523375105/Screen_Shot_2018-04-10_at_11.43.00_AM_fhatc7.png)
+![Screenshot 3](http://res.cloudinary.com/jasuaje/image/upload/v1523375105/Screen_Shot_2018-04-10_at_11.43.56_AM_jmp8i3.png)
+
 ## Instructions
 
 The game board consists of sixteen "cards" arranged in a grid. The deck is made up of eight different pairs of cards, each with different symbols on one side. The cards are arranged randomly on the grid with the symbol face down. The gameplay rules are very simple: flip over two hidden cards at a time to locate the ones that match!
